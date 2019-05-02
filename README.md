@@ -1,8 +1,14 @@
 # Remnant
 A keylogger written in Python with scheduled emailing functionality.
 
-## Getting Started
-There are several modules that you will need to make sure are installed before you can run Remnant keylogger.
+## Installation
+
+Run the following command:
+```
+pip install -r requirements.txt
+```
+
+This installs several modules that you will need to run Remnant Keylogger.
 
 * datetime
 * email
@@ -13,13 +19,15 @@ There are several modules that you will need to make sure are installed before y
 * smtplib
 * threading
 
-Most of these modules can be installed using pip. For example:
+Most of these modules can be installed individually. For example:
 
 ```
 pip install smtplib
 ```
 
-The email module can be obtained using easy_install.
+### Troubleshooting
+
+If the email module fails to install from pip it can be obtained using easy_install.
 
 ```
 easy_install email
@@ -34,24 +42,47 @@ This example is installing pyHook for 64bit Windows and Python 3.5.
 
 ## Setup
 
-Set your sending email and the address to which you want the keylog file to be sent.
+Remnant Keylogger uses environment variables. To set these duplicate ```.env.example``` and name it ```.env```. It contains the following required settings.
 
-```
-fromaddr = "YOUR SENDING EMAIL ADDRESS"
-toaddr = "YOUR RECEIVING EMAIL ADDRESS"
-```
-Also update these parameters with your email access credentials. Here we are using Gmail's smtp server on port 587. The password is placed directly in 'server.login' rather than a variable as the preceding line 'server.starttls' helps obfuscate this.
+### SENDING_EMAIL
 
-```
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login(fromaddr, "SENDING EMAIL ACCOUNT PASSWORD")
-```
-Set the time you want the keylog.txt file to be sent to you here:
+The email from which the generated ```klog.txt``` will be sent from eg. name@example.com
 
-```
-y=x.replace(day=x.day+offset, hour=16, minute=30, second=0, microsecond=0)
-```
+### SENDING_EMAIL_PASSWORD
+
+The password for the email account from which the keylog will be sent.
+
+### RECEIVING_EMAIL
+
+The email address to which the keylog will be sent. You can use the same email address as **SEND_EMAIL**.
+
+### HOUR
+
+The hour at which keylog will be sent. This use the 24 hour clock.
+
+### MINUTE
+
+The minute past the hour at which the keylog will be sent.
+
+### SECOND
+
+The second past the minute at which the keylog will be sent. Recommend leaving this as *00*.
+
+### MICROSECOND
+
+The microsecond past the second at which the keylog will be sent. Recommend leaving this as *00*.
+
+### SERVER
+
+Sending email server name.
+
+### PORT
+
+Port that sending email server uses.
+
+### DELETE
+
+Whether to delete the Remnant Keylogger after first email has been sent. Accepts boolean of *true* or *false*.
 
 
 ## Disclaimer
