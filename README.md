@@ -58,7 +58,7 @@ The email address to which the keylog will be sent. You can use the same email a
 
 ### HOUR
 
-The hour at which keylog will be sent. This use the 24 hour clock.
+The hour at which keylog will be sent. This uses the 24 hour clock.
 
 ### MINUTE
 
@@ -83,7 +83,6 @@ Port that sending email server uses.
 ### DELETE
 
 Whether to delete the Remnant Keylogger after first email has been sent. Accepts boolean of *true* or *false*.
-
 
 ## Disclaimer
 This code is distributed for educational and research purposes. Do not use without a person's consent.
