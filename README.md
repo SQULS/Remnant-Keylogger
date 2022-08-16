@@ -88,4 +88,4 @@ Whether to delete the Remnant Keylogger after first email has been sent. Accepts
 This code is distributed for educational and research purposes. Do not use without a person's consent.
 
 ## License
-This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the [LICENSE](LICENSE) file for details.
+This project is licensed under The Unlicense - see the [LICENSE](LICENSE) file for details.
